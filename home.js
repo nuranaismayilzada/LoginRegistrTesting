@@ -1,18 +1,18 @@
 import { getAllData } from "./request.js";
 import { productURL } from "./url.js";
 const cards = document.querySelector(".cards")
-const exit=document.querySelector(".exit")
-exit.addEventListener("click",()=>{
+const exit = document.querySelector(".exit")
+exit.addEventListener("click", () => {
     localStorage.clear()
-    location.href="./index.html";
+    location.href = "./index.html";
 })
 console.log(cards);
 const createCard = async (source, url) => {
 
     const data = await getAllData(productURL)
-    data.forEach((element) => {
-        element.forEach(elem => {
-            const productCard = document.createElement("div");
+    data.forEach((elem) => {
+
+        const productCard = document.createElement("div");
         productCard.id = elem.id;
         const badge = document.createElement("div");
         const productTumb = document.createElement("div");
@@ -68,14 +68,12 @@ const createCard = async (source, url) => {
 
         productSpan.innerText = elem.category;
         productName.innerText = elem.title;
-      
+
         productDescription.innerText =
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimusnostrum!";
         productPrice.innerText = elem.price + "$";
     });
-            
-        });
-        
+
 };
 
 createCard(cards, productURL)
