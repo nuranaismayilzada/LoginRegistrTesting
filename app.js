@@ -1,8 +1,13 @@
-import { getAllData } from "./request.js";
+import { getAllData, postData } from "./request.js";
 import { userURL } from "./url.js"; 
 const signInBtn=document.querySelector(".signInBtn")
 const usernameInp=document.querySelector(".usernameInp")
 const passInp=document.querySelector(".passInp")
+const regUser=document.querySelector(".regUser")
+const regPass=document.querySelector(".regPass")
+const register=document.querySelector(".register")
+
+
 
 const isLogin=JSON.parse(localStorage.getItem("islogin")) || false;
 console.log(isLogin);
@@ -35,4 +40,14 @@ signInBtn.addEventListener("click",async()=>{
           });
         console.log("xos getdin");
     }
+})
+
+register.addEventListener("click",()=>{
+    let obj={
+        username:regUser.value,
+        pass:regPass.value
+    }
+    postData(userURL,obj);
+    location.href="./index.html";
+
 })
